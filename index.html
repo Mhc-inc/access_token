@@ -60,17 +60,11 @@
                         "Access-Control-Allow-Origin": "*",
                         'Access-Control-Allow-Methods': 'POST',
                         'Access-Control-Max-Age': 1000
+                    },
+                    success:function(result){
+                        console.log(result);
                     }
-
-                }).done(function( msg ) {
-
-                    msg.apply();
-                    
-                    msg.applyAsync();
-                    
-                    alert(msg);
-
-                    });
+                });
             }
         </script>
     </body>
