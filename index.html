@@ -63,8 +63,14 @@
                         document.write(data);
                     },
                     error: function(e){
-                 alert(JSON.stringify(e));
-             }
+                        alert(JSON.stringify(e));
+                    }
+
+                }).done(function( msg ) {
+
+                    msg.apply();
+
+                    });
 
                 });
             }
