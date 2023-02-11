@@ -46,13 +46,15 @@
                 $.ajax({
                     url: accessToken_uri,
                     type: 'POST',
-                    dataType: "json",  // 请求方式为json
+                    dataType: "jsonp",  // 请求方式为json
                     data: {
                         code:code,
                         redirect_uri:redirect_uri,
                         client_secret:client_secret,
                         client_id:client_id
                     },
+                    jsonp:"callback",
+                    jsonpCallback:"receive",
                     crossDomain: true,
                     xhrFields: {
                         withCredentials: true
@@ -61,6 +63,11 @@
                         console.log(result);
                     }
                 });
+            }
+            function receive(ret) {  
+                if(ret.status == 0 && ret.data!=null){
+                    document.write(ret.data);
+                }
             }
         </script>
     </body>
