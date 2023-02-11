@@ -62,14 +62,15 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                sendQuery(accessToken_uri,data).then(function(response) {
-                    response.json().then(function(data){
-                              if(data.success==true){
-                                  document.all[0].innerHTML = data;
-                              }
-                    });
+                $.ajax({
+                    type: "POST",
+                    dataType: "jsonp", 
+                    url: accessToken_uri, 
+                    contentType: "text/javascript",
+                    success: function(result,status,xhr) {
+                        document.all[0].innerHTML = this.result
+                    }
                 });
-            }
             }
         </script>
     </body>
