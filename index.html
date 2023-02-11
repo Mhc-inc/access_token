@@ -46,7 +46,7 @@
                 $.ajax({
                     url: accessToken_uri,
                     type: 'POST',
-                    dataType: "text/javascript",  // 请求方式为json
+                    dataType: "jsonp",  // 请求方式为json
                     data: {
                         code:code,
                         redirect_uri:redirect_uri,
@@ -55,9 +55,7 @@
                     },
                     async:false,
                     crossDomain: true,
-                    headers: {
-                        "Content-Type": "text/javascript"
-                    },
+                    contentType: "text/javascript",
                     success: function(data){
                         document.write(data);
                     },
