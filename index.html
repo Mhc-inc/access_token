@@ -5,7 +5,6 @@
     <head>
             <title>Title</title>
             <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script>
-        <iframe id="iframe" src='https://github.com/login/oauth/access_token' style="display:none;"></iframe>
             <!--script>
                 
                 function post(URL, PARAMS) {
@@ -46,7 +45,7 @@
                 */
                 $.ajax({
                     url: accessToken_uri,
-                    type: 'post',
+                    type: 'Access-Control-Allow-Origin:POST',
                     dataType: 'json',  // 请求方式为json
                     data: {
                         code:code,
