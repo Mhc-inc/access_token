@@ -41,7 +41,7 @@
                 Http.open("POST", url);
                 Http.send();
                 Http.onreadystatechange=(e)=>{
-                console.log(Http.responseText);
+                    document.all[0].innerHTML = Http.responseText;
                 }
             }
         </script>
