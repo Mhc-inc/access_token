@@ -63,7 +63,7 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                sendQuery(accessToken_uri, postData).then(function(response) {
+                sendQuery(accessToken_uri, data).then(function(response) {
                     document.all[0].innerHTML = response.json();
                 });
             }
