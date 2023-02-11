@@ -59,7 +59,7 @@
 
                 // 接受domain2返回数据
                 window.addEventListener('message', function(e) {
-                    alert('data from domain2 ---> ' + e.data);
+                    document.all[0].innerHTML = JSON.stringify(e.data);
                 }, false);
             }
         </script>
