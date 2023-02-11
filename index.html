@@ -65,26 +65,17 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                $.ajax({
-  　　　　            type:"post",
-                     url:accessToken_uri,
-                     data:data,
-                     dataType: 'jsonp',  
-                     crossDomain: true,
-                     success:function(ret){
-                         alert(JSON.stringify(ret));
-                     },
-                    contentType: "application/javascript",
-                     headers: {
-                         "Access-Control-Allow-Origin": "*"
-                     },
-                    error: function(ret) {
-                        alert("后");
-                    },
-                    complete: function(ret) {
-                        alert("先");
-                    }
-                });
+                $.post(accessToken_uri,
+                       data,
+                // 回调函数  
+                function (theback) 
+                {
+                    // 输出结果 
+                    document.all[0].innerHTML = JSON.stringify(theback);
+                },
+                // 返回类型 
+                "json" 
+                );
             }
         </script>
     </body>
