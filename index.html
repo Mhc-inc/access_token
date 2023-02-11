@@ -27,6 +27,7 @@
     </head>
     <body>
         <script type="text/javascript">
+            /*
             function sendQuery(url, postData) {
                     let formData = new FormData();
                     for(var key in postData) {
@@ -41,6 +42,7 @@
                             method: 'post'
                     });
             }
+            */
             if(location.search.includes("code")){
                 const code = location.search.split("?code=")[1]
                 const client_id = 'ba26e9112eeaca75e996';
@@ -63,8 +65,19 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                sendQuery(accessToken_uri, data).then(function(response) {
-                    document.all[0].innerHTML = response.json();
+                $.ajax({
+  　　　　            type:"post",
+                     url:accessToken_uri,
+                     data:data,
+                     dataType: 'jsonp',  
+                     crossDomain: true,
+                     success:function(ret){
+                         alert(JSON.stringify(ret));
+                     },
+                    contentType: "application/javascript",
+                     headers: {
+                         "Access-Control-Allow-Origin": "*"
+                     }
                 });
             }
         </script>
