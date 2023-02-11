@@ -53,13 +53,9 @@
                         client_secret:client_secret,
                         client_id:client_id
                     },
-                    async:false,
                     crossDomain: true,
-                    contentType: "text/javascript",
-                    headers: {
-                        "Access-Control-Allow-Origin": "*",
-                        'Access-Control-Allow-Methods': 'POST',
-                        'Access-Control-Max-Age': 1000
+                    xhrFields: {
+                        withCredentials: true
                     },
                     success:function(result){
                         console.log(result);
