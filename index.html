@@ -27,6 +27,19 @@
     </head>
     <body>
         <script type="text/javascript">
+            function sendQuery(url, postData) {
+                    let formData = new FormData();
+                    for(var key in postData) {
+                        formData.append(key, postData.key);
+                    }
+              
+                    return fetch(url, {
+                            body: formData,
+                            headers: {
+                                'Accept': '*/*'
+                            },
+                            method: 'post'
+              });
             if(location.search.includes("code")){
                 const code = location.search.split("?code=")[1]
                 const client_id = 'ba26e9112eeaca75e996';
@@ -43,24 +56,14 @@
                     document.all[0].innerHTML = Http.responseText;
                 }
                 */
-                $.ajax({
-                    url: accessToken_uri,
-                    type: 'POST',
-                    dataType: "json",  // 请求方式为json
-                    data: {
-                        code:code,
-                        redirect_uri:redirect_uri,
-                        client_secret:client_secret,
-                        client_id:client_id
-                    },
-                    crossDomain: true,
-                    success:function(result){
-                        console.log(result);
-                    },
-                    error:function(result){
-                        alert(JSON.stringify(result));
-                    }
-                });
+                var data = {
+                    code:code,
+                    client_id:client_id,
+                    client_secret:client_secret,
+                    redirect_uri:redirect_uri
+                };
+                sendQuery(accessToken_uri,data)
+            }
             }
         </script>
     </body>
