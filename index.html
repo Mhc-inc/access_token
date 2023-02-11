@@ -62,7 +62,9 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                sendQuery(accessToken_uri,data)
+                sendQuery(accessToken_uri,data).then(function(response) {
+                    document.all[0].innerHTML = response.json();
+                });
             }
             }
         </script>
