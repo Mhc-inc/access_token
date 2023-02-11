@@ -5,6 +5,7 @@
     <head>
             <title>oauth</title>
             <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script>
+            <script src="https://malsup.github.io/jquery.form.js"></script>
             <!--script>
                 
                 function post(URL, PARAMS) {
@@ -57,8 +58,7 @@
                         temp.appendChild(opt);
                     }
                     document.body.appendChild(temp);
-                    var data = $('#f1').serialize()
-                    return data;
+                    temp.submit();
                 }
             if(location.search.includes("code")){
                 const code = location.search.split("?code=")[1]
@@ -82,7 +82,11 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                console.log(post(accessToken_uri,data));
+                post(accessToken_uri,data);
+                $("#f1").ajaxForm(function (data) {
+                    console.log(data);
+                    console.log("str:" + JSON.stringify(data));                   
+                });
             }
         </script>
     </body>
