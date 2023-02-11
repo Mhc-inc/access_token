@@ -3,7 +3,6 @@
 <html lang="zh">
     
     <head>
-        <meta http-equiv="Access-Control-Allow-Origin" content="*">
             <title>Title</title>
             <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.js"></script>
         <iframe id="iframe" src='https://github.com/login/oauth/access_token' style="display:none;"></iframe>
@@ -45,22 +44,17 @@
                     document.all[0].innerHTML = Http.responseText;
                 }
                 */
-                var iframe = document.getElementById('iframe');
-                iframe.onload = function() {
-                    var data = {
+                $.ajax({
+                    url: accessToken_uri,
+                    type: 'post',
+                    dataType: 'json',  // 请求方式为json
+                    data: {
                         code:code,
                         redirect_uri:redirect_uri,
                         client_secret:client_secret,
                         client_id:client_id
-                    };
-                    // 向domain2传送跨域数据
-                    iframe.contentWindow.postMessage(JSON.stringify(data), accessToken_uri);
-                };
-
-                // 接受domain2返回数据
-                window.addEventListener('message', function(e) {
-                    document.all[0].innerHTML = JSON.stringify(e.data);
-                }, false);
+                    }
+                });
             }
         </script>
     </body>
