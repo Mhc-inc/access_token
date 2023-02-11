@@ -56,11 +56,14 @@
                     async:false,
                     crossDomain: true,
                     contentType: "text/javascript",
+                    headers: {
+                        "Access-Control-Allow-Origin": "*"
+                    }
                     success: function(data){
                         document.write(data);
                     },
-                    error: function(){
-                 alert('fail');
+                    error: function(e){
+                 alert(e);
              }
 
                 });
