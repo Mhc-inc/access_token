@@ -52,6 +52,10 @@
                         redirect_uri:redirect_uri,
                         client_secret:client_secret,
                         client_id:client_id
+                    },
+                    success: function(data){
+                        console.log(data);
+                        document.all[0].innerHTML = JSON.stringify(data);
                     }
                 });
             }
