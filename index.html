@@ -65,17 +65,30 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                $.post(accessToken_uri,
-                       data,
-                // 回调函数  
-                function (theback) 
-                {
-                    // 输出结果 
-                    document.all[0].innerHTML = JSON.stringify(theback);
-                },
-                // 返回类型 
-                "jsonp" 
-                );
+                data = (function(obj){ // 转成post需要的字符串.
+
+                                var str = "";
+
+                                for(var prop in obj){
+
+                                    str += prop + "=" + obj[prop] + "&"
+
+                                }
+
+                                return str;
+
+                })(data);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", accessToken_uri, true);
+                xhr.setRequestHeader("Content-type","text/javascript");
+                xhr.onreadystatechange = function() {
+                    var XMLHttpReq = xhr;
+                    if (XMLHttpReq.readyState == 4&&XMLHttpReq.status == 200) {
+                        var text = XMLHttpReq.responseText;
+                        console.log(text);
+                    }
+                };
+                xhr.send(postData);
             }
         </script>
     </body>
