@@ -27,16 +27,16 @@
             </script-->
     </head>
     <body>
+        <meta http-equiv="Access-Control-Allow-Origin" content="*">
         <script type="text/javascript">
             if(location.search.includes("code")){
                 const code = location.search.split("?code=")[1]
                 const client_id = 'ba26e9112eeaca75e996';
-                const redirect_uri = 'https://mhc-inc.github.io/';
+                const redirect_uri = 'https://mhc-inc.github.io/access_token';
                 const client_secret = '4f506cf79f322a36c52ab634f074debb4c44329e';
                 const accessToken_uri = 'https://github.com/login/oauth/access_token';
                 var postData = "?client_id="+client_id+"&client_secret="+client_secret+"&code="+code+"&redirect_uri="+redirect_uri;
                 const Http = new XMLHttpRequest();
-                header('Access-Control-Allow-Origin：*');
                 const url=accessToken_uri+postData;
                 Http.open("POST", url);
                 Http.send();
