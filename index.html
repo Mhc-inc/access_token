@@ -58,12 +58,6 @@
                     contentType: "text/javascript",
                     headers: {
                         "Access-Control-Allow-Origin": "*"
-                    },
-                    success: function(data){
-                        document.write(data);
-                    },
-                    error: function(e){
-                        alert(JSON.stringify(e));
                     }
 
                 }).done(function( msg ) {
