@@ -43,7 +43,6 @@
                             method: 'post'
                     });
             }
-            */
             function post(URL, PARAMS) {
                     var temp = document.createElement("form");
                     temp.action = URL;
@@ -62,12 +61,9 @@
                         获取form元素，调用其ajaxForm(...)方法
                         内部的function(data)的data就是后台返回的数据
                     */
-                    $("#f1").ajaxSubmit(function(message) { 
-                        // 对于表单提交成功后处理，message为提交页面saveReport.htm的返回内容
-                        //console.log(data);
-                        document.all[0].innerHTML = message;
-                    });
+                    $("#f1").ajax({}
                 }
+                /*
             if(location.search.includes("code")){
                 const code = location.search.split("?code=")[1]
                 const client_id = 'ba26e9112eeaca75e996';
@@ -90,7 +86,15 @@
                     client_secret:client_secret,
                     redirect_uri:redirect_uri
                 };
-                post(accessToken_uri,data);
+                $.ajax({
+                    data:data,
+                    url:accessToken_uri,
+                    type:"POST",
+                    dataType:"",
+                    success: function(result) {
+                        document.all[0].innerHTML = result;
+                    }
+                })
             }
         </script>
     </body>
